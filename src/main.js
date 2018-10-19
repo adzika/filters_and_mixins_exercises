@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-Vue.filter('lengthcount', function(value) {
-    return value.length();
+Vue.filter('length', function(value) {
+    return value + " (" + value.length + ")";
 });
 
 Vue.mixin({

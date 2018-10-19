@@ -4,15 +4,24 @@
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <h1>Filters & Mixins</h1>
                 <p>Exercise 1</p>
-                <p>{{ text | reverse }}</p>
+                <div>
+                    <input type="text"
+                           v-model="word">
+                    <p>{{ word | reverse }}</p>
+
+                    <p>{{ computedReverse }}</p>
+                </div>
 
 
-                <!-- Exercise 2 -->
-                <!-- Build a global Filter which counts the length of a word and it appends it -->
-                <!-- Like this: "Test" => Gets Filtered to => "Test (4)" -->
 
-                <!-- Exercise 3 -->
-                <!-- Do the same as in Exercises 1 & 2, now with Computed Properties -->
+                <p>Exercise 2</p>
+                <div>
+                    <input type="text"
+                           v-model="word">
+                    <p>{{ word | length }}</p>
+
+                    <p>{{ computedLength }}</p>
+                </div>
 
                 <!-- Exercise 4 -->
                 <!-- Share the Computed Property rebuilding Exercise 2 via a Mixin -->
@@ -24,13 +33,21 @@
 <script>
     export default {
         data() {
-          return {
-              text: "Hello there!"
-          }
+            return {
+                word: ""
+            }
         },
         filters: {
             reverse(value) {
                 return value.split("").reverse().join("");
+            }
+        },
+        computed: {
+            computedReverse() {
+                return this.word.split("").reverse().join("");
+            },
+            computedLength() {
+                return this.word + " (" + this.word.length + ")";
             }
         }
     }
