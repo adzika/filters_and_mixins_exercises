@@ -31,7 +31,10 @@
 </template>
 
 <script>
+    import { exerciseMixin } from './exerciseMixin';
+
     export default {
+        mixins: [exerciseMixin],
         data() {
             return {
                 word: ""
@@ -40,14 +43,6 @@
         filters: {
             reverse(value) {
                 return value.split("").reverse().join("");
-            }
-        },
-        computed: {
-            computedReverse() {
-                return this.word.split("").reverse().join("");
-            },
-            computedLength() {
-                return this.word + " (" + this.word.length + ")";
             }
         }
     }
